@@ -21,9 +21,10 @@ return new class extends Migration
             $table->boolean('same_slot_all_days')->nullable();
             $table->json('slots')->nullable();
 
-            $table->foreign('booking_product_id')
-                ->references('id')->on('booking_products')
-                ->onDelete('cascade');
+            // Fix: shortened foreign key name
+            $table->foreign('booking_product_id', 'booking_product_fk')
+                  ->references('id')->on('booking_products')
+                  ->onDelete('cascade');
         });
     }
 
